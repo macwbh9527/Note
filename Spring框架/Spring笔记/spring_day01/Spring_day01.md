@@ -75,7 +75,7 @@
 介绍完`为什么要学`、`学什么`和`怎么学`Spring框架后，大家需要重点掌握的是:
 
 * Spring很优秀，需要认真重点的学习
-* Spring的学习主线是IOC、AOP、声明式事务和整合MyBais
+* Spring的学习主线是IOC、AOP、声明式事务和整合MyBatis
 
 接下来，咱们就开始进入Spring框架的学习。
 
@@ -230,7 +230,7 @@ Spring发展史
 
 (1)什么是控制反转呢？
 
-* 使用对象时，由主动new产生对象转换为由==外部==提供对象，此过程中对象创建控制权由程序转移到外部，此思想称为控制反转。
+* 使用对象时，由主动new产生对象转换为由==外部==提供对象，此过程中==对象创建控制权由程序转移到外部==，此思想称为控制反转。
   * 业务层要用数据层的类对象，以前是自己`new`的
   * 现在自己不new了，交给`别人[外部]`来创建对象
   * `别人[外部]`就反转控制了数据层对象的创建权
@@ -294,7 +294,7 @@ Spring创建了一个容器用来存放所创建的对象，这个容器就叫IO
 
 (3)什么是Bean?
 
-容器中所存放的一个个对象就叫Bean或Bean对象
+==容器中所存放的一个个对象就叫Bean或Bean对象==
 
 ## 3，入门案例
 
@@ -318,7 +318,7 @@ Spring创建了一个容器用来存放所创建的对象，这个容器就叫IO
 
 * Spring框架提供相应的接口
 
-(4)IOC容器得到后，如何从容器中获取bean?
+(4)IOC容器得到后，如何从容器中获取bean? 
 
 * 调用Spring框架提供对应接口中的方法
 
@@ -503,7 +503,7 @@ public class BookServiceImpl implements BookService {
 }
 ```
 
-##### 步骤2:为属性提供setter方法
+##### ==步骤2:为属性提供setter方法==
 
 在BookServiceImpl类中,为BookDao提供setter方法
 
@@ -553,7 +553,7 @@ public class BookServiceImpl implements BookService {
 
 ==注意:配置中的两个bookDao的含义是不一样的==
 
-* name="bookDao"中`bookDao`的作用是让Spring的IOC容器在获取到名称后，将首字母大写，前面加set找对应的`setBookDao()`方法进行对象注入
+* ==name="bookDao"中`bookDao`的作用是让Spring的IOC容器在获取到名称后，将首字母大写，前面加set找对应的`setBookDao()`方法进行对象注入==
 * ref="bookDao"中`bookDao`的作用是让Spring能在IOC容器中找到id为`bookDao`的Bean对象给`bookService`进行注入
 * 综上所述，对应关系如下:
 
@@ -589,7 +589,7 @@ public class BookServiceImpl implements BookService {
 
 **思考：**
 
-* class属性能不能写接口如`BookDao`的类全名呢?
+* ==class属性能不能写接口如`BookDao`的类全名呢?==
 
 答案肯定是不行，因为接口是没办法创建对象的。
 
@@ -751,20 +751,20 @@ public class AppForName {
 
 介绍完`scope`属性以后，我们来思考几个问题:
 
-* 为什么bean默认为单例?
+* ==为什么bean默认为单例?==
   * bean为单例的意思是在Spring的IOC容器中只会有该类的一个对象
   * bean对象只有一个就避免了对象的频繁创建与销毁，达到了bean对象的复用，性能高
-* bean在容器中是单例的，会不会产生线程安全问题?
-  * 如果对象是有状态对象，即该对象有成员变量可以用来存储数据的，
+* ==bean在容器中是单例的，会不会产生线程安全问题?==
+  * 如果对象是==有状态对象==，即该对象有成员变量可以用来存储数据的，
   * 因为所有请求线程共用一个bean对象，所以会存在线程安全问题。
-  * 如果对象是无状态对象，即该对象没有成员变量没有进行数据存储的，
+  * 如果对象是==无状态对象==，即该对象没有成员变量没有进行数据存储的，
   * 因方法中的局部变量在方法调用完成后会被销毁，所以不会存在线程安全问题。
-* 哪些bean对象适合交给容器进行管理?
+* ==哪些bean对象适合交给容器进行管理?==
   * 表现层对象
   * 业务层对象
   * 数据层对象
   * 工具对象
-* 哪些bean对象不适合交给容器进行管理?
+* ==哪些bean对象不适合交给容器进行管理?==
   * 封装实例的域对象，因为会引发线程安全问题，所以不适合。
 
 #### 4.14 bean基础配置小结
@@ -883,7 +883,7 @@ public class BookDaoImpl implements BookDao {
 }
 ```
 
-运行程序，能执行成功,说明内部走的依然是构造函数,能访问到类中的私有构造方法,显而易见Spring底层用的是反射
+运行程序，能执行成功,说明==内部走的依然是构造函数,能访问到类中的私有构造方法==,显而易见Spring底层用的是反射
 
 ![1629775972507](https://raw.githubusercontent.com/macwbh9527/Note/main/image/202301151115846.png)
 
@@ -903,7 +903,7 @@ public class BookDaoImpl implements BookDao {
 
 运行程序，
 
-程序会报错，说明Spring底层使用的是类的无参构造方法。
+程序会报错，说明==Spring底层使用的是类的无参构造方法。==
 
 ![1629776331499](https://raw.githubusercontent.com/macwbh9527/Note/main/image/202301151115847.png)
 
@@ -1179,9 +1179,9 @@ default boolean isSingleton() {
 }
 ```
 
-方法一:getObject()，被重写后，在方法中进行对象的创建并返回
+方法一:==getObject()，被重写后，在方法中进行对象的创建并返回==
 
-方法二:getObjectType(),被重写后，主要返回的是被创建类的Class对象
+方法二:==getObjectType(),被重写后，主要返回的是被创建类的Class对象==
 
 方法三:没有被重写，因为它已经给了默认值，从方法名中可以看出其作用是设置对象是否为单例，默认true，从意思上来看，我们猜想默认应该是单例，如何来验证呢?
 
