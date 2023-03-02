@@ -753,7 +753,7 @@ public class AppForName {
 
 * ==为什么bean默认为单例?==
   * bean为单例的意思是在Spring的IOC容器中只会有该类的一个对象
-  * bean对象只有一个就避免了对象的频繁创建与销毁，达到了bean对象的复用，性能高
+  * bean对象只有一个**就避免了对象的频繁创建与销毁，达到了bean对象的复用，性能高**
 * ==bean在容器中是单例的，会不会产生线程安全问题?==
   * 如果对象是==有状态对象==，即该对象有成员变量可以用来存储数据的，
   * 因为所有请求线程共用一个bean对象，所以会存在线程安全问题。
@@ -784,7 +784,7 @@ public class AppForName {
 
 在讲解这三种创建方式之前，我们需要先确认一件事:
 
-bean本质上就是对象，对象在new的时候会使用构造方法完成，那创建bean也是使用构造方法完成的。
+==**bean本质上就是对象，对象在new的时候会使用构造方法完成，那创建bean也是使用构造方法完成的。**==
 
 基于这个知识点出发，我们来验证spring中bean的三种创建方式，
 
@@ -933,7 +933,7 @@ Exception in thread "main" org.springframework.beans.factory.BeanCreationExcepti
 
 至此，关于Spring的构造方法实例化就已经学习完了，因为每一个类默认都会提供一个无参构造函数，所以其实真正在使用这种方式的时候，我们什么也不需要做。这也是我们以后比较常用的一种方式。
 
-#### 4.2.4 静态工厂实例化
+#### 4.2.4 静态工厂实例化--==了解为主==
 
 接下来研究Spring中的第二种bean的创建方式`静态工厂实例化`:
 
@@ -1063,7 +1063,7 @@ public class UserDaoImpl implements UserDao {
 }
 ```
 
-(2)创建一个工厂类OrderDaoFactory并提供一个普通方法，注意此处和静态工厂的工厂类不一样的地方是方法不是静态方法
+(2)创建一个工厂类OrderDaoFactory并提供一个普通方法，注意**此处和静态工厂的工厂类不一样的地方是方法==不是静态方法==**
 
 ```java
 public class UserDaoFactory {
@@ -1236,13 +1236,13 @@ public class UserDaoFactoryBean implements FactoryBean<UserDao> {
 
 通过这一节的学习，需要掌握:
 
-(1)bean是如何创建的呢?
+(1)bean是如何**创建**的呢?
 
 ```
 构造方法
 ```
 
-(2)Spring的IOC实例化对象的三种方式分别是:
+(2)Spring的IOC**实例化对象**的三种方式分别是:
 
 * 构造方法(常用)
 * 静态工厂(了解)

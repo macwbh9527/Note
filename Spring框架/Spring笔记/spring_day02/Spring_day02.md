@@ -1,4 +1,4 @@
-## Spring_day02
+## 1Spring_day02
 
 **今日目标**
 
@@ -1463,7 +1463,7 @@ public class BookDaoImpl2 implements BookDao {
 
   * @Autowired是按照类型注入的，给BookDao的两个实现起了名称，它还是有两个bean对象，为什么不报错?
 
-  * @Autowired默认按照类型自动装配，如果IOC容器中同类的Bean找到多个，就按照变量名和Bean的名称匹配。因为变量名叫`bookDao`而容器中也有一个`booDao`，所以可以成功注入。
+  * ==@Autowired默认按照类型自动装配，如果IOC容器中同类的Bean找到多个，就按照变量名和Bean的名称匹配。因为变量名叫`bookDao`而容器中也有一个`booDao`，所以可以成功注入。==
 
   * 分析下面这种情况是否能完成注入呢?
 
@@ -1489,7 +1489,7 @@ public class BookServiceImpl implements BookService {
 }
 ```
 
-@Qualifier注解后的值就是需要注入的bean的名称。
+==@Qualifier注解后的值就是需要注入的bean的名称。==
 
 ==注意:@Qualifier不能独立使用，必须和@Autowired一起使用==
 

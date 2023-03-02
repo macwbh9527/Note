@@ -968,7 +968,7 @@ public class BookController {
 **注意:**
 
 * 当类上和方法上都添加了`@RequestMapping`注解，前端发送请求的时候，要和两个注解的value值相加匹配才能访问到。
-* @RequestMapping注解value属性前面加不加`/`都可以
+* **@RequestMapping注解value属性前面加不加`/`都可以**
 
 扩展小知识:
 
@@ -2064,8 +2064,8 @@ public class UserController {
 * 该注解可以写在类上或者方法上
 * 写在类上就是该类下的所有方法都有@ReponseBody功能
 * 当方法上有@ReponseBody注解后
-  * 方法的返回值为字符串，会将其作为文本内容直接响应给前端
-  * 方法的返回值为对象，会将对象转换成JSON响应给前端
+  * **方法的返回值为字符串，会将其作为文本内容直接响应给前端**
+  * **方法的返回值为对象，会将对象转换成JSON响应给前端**
 
 此处又使用到了类型转换，内部还是通过Converter接口的实现类完成的，所以Converter除了前面所说的功能外，它还可以实现:
 
